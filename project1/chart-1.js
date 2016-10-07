@@ -118,7 +118,7 @@
       .attr("alignment-baseline", "middle")
       .style("fill", "#ED1C24")
       .text(function(d) {
-        return d + " USD"
+        return "USD " + d
       })
 
       // how do I make them to start at radiusScale('2500000')?
