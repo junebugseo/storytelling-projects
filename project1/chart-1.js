@@ -86,7 +86,7 @@
       .attr("fill", "none")
       .attr("opacity", 0.7)
       .transition()
-      .duration(3000)
+      .duration(2000)
       .attr("d", radialArea)
       .attr("stroke", "none")
       //.attr("fill", "orange")
