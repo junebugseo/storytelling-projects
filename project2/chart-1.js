@@ -76,13 +76,6 @@
   function ready(error, datapoints) {
     var g = svg.append("g").attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
 
-    var nested = d3.nest()
-      .key(function(d) {
-        return d.market
-      })
-      .entries(datapoints);
-      console.log(nested)
-
     // Define the gradient
     var gradient = svg.append("svg:defs")
         .append("svg:linearGradient")
@@ -107,8 +100,8 @@
     g.append("path")
       .datum(datapoints)
       .attr("d", radialLineLow)
-      .attr("class", "path_low")
-      .attr("stroke", "black")
+      .attr("class", "path-low")
+      .attr("stroke", "#75C7EF")
       .attr("stroke-width", 0.5)
       .attr("fill", "none")
       .attr("opacity", 0.7)
@@ -119,10 +112,10 @@
       //.attr('fill', 'url(#gradient)')
       //.attr("opacity", 0.5);
 
-    g.selectAll(".dollar_circle")
+    g.selectAll(".dollar-circle")
       .data([50000, 2500000, 5000000])
       .enter().append("circle")
-      .attr("class", "dollar_circle")
+      .attr("class", "dollar-circle")
       .attr("cx", 0)
       .attr("cy", 0)
       .attr("r", function(d) {
@@ -133,10 +126,10 @@
       //.attr("stroke", "#EE3A39")
       .attr("stroke-width", 0.3)
 
-    g.selectAll(".dollar_text")
+    g.selectAll(".dollar-text")
       .data([50000, 2500000, 5000000])
       .enter().append("text")
-      .attr("class", "dollar_text")
+      .attr("class", "dollar-text")
       .attr("x", 0)
       .attr("y", function(d) {
         return -(radiusScale(d)) - 5
@@ -194,9 +187,9 @@
       })
 
       d3.select("#slide-1").on('slidein', function() {
-        g.selectAll(".path_low")
+        g.selectAll(".path-low")
         .attr("d", radialLineLow)
-        .attr("stroke", "black")
+        .attr("stroke", "#75C7EF")
         .attr("stroke-width", 0.5)
         .attr("fill", "none")
         .attr("opacity", 0.7)
@@ -209,19 +202,27 @@
 
       })
       d3.select("#slide-1").on('slideout', function() {
-        return
-      })
-      d3.select("#slide-2").on('slidein', function() {
-        g.selectAll(".path_low")
-        .attr("opacity", 0.3)
-
-        g.selectAll("path")
-        .datum(datapoints)
-        .attr("d", radialLineHigh)
-        .attr("class", "path_high")
-        .attr("stroke", "black")
+        g.selectAll(".path-low")
+        .attr("d", radialLineLow)
+        .attr("stroke", "#75C7EF")
         .attr("stroke-width", 0.5)
         .attr("fill", "none")
+        .attr("opacity", 0.7)
+      })
+      d3.select("#slide-2").on('slidein', function() {
+
+        g.selectAll(".path-low")
+        .datum(datapoints)
+        .transition()
+        .duration(2000)
+        .attr("d", radialLineHigh)
+        .attr("class", "path-high")
+        .attr("stroke", "#EE3A39")
+        .attr("stroke-width", 0.5)
+        .attr("fill", "none")
+        .attr("opacity", 0.5)
+
+        g.selectAll(".path-low")
         .attr("opacity", 0.7)
       })
       d3.select("#slide-2").on('slideout', function() {
