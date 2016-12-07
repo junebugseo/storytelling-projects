@@ -55,32 +55,32 @@
 
 
 
-//   d3.json("borough.json", function(error, data) {
-//     if (error) throw error;
-//
-//
-//
-//     var boros = topojson.feature(data, data.objects.boroughgeo).features
-//
-//     var projection = d3.geoTransverseMercator()
-//     .center([-73.30, 40.30])
-//     .scale(200)
-//     .translate([width / 2, height / 2])
-//
-//     var path = d3.geoPath().projection(projection);
-//
-//     var g = svg.append("g")
-//
-//     g.selectAll("path")
-//       .data(boros)
-//       .enter().append("path")
-//       .attr("d", path)
-//       .attr("fill", "none")
-//       .style("stroke", "black")
-//       .style("stroke-width", 0.5)
-//       .style("opacity", 0.5);
-//
-// });
+  d3.json("borough.json", function(error, data) {
+    if (error) throw error;
+
+
+
+    var boros = topojson.feature(data, data.objects.boroughgeo).features
+
+    var projection = d3.geoTransverseMercator()
+    .center([-73.30, 40.30])
+    .scale(200)
+    .translate([width / 2, height / 2])
+
+    var path = d3.geoPath().projection(projection);
+
+    var g = svg.append("g")
+
+    g.selectAll("path")
+      .data(boros)
+      .enter().append("path")
+      .attr("d", path)
+      .attr("fill", "none")
+      .style("stroke", "black")
+      .style("stroke-width", 0.5)
+      .style("opacity", 0.5);
+
+});
 
   d3.select("svg")
     .append("image")
