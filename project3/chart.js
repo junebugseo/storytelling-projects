@@ -50,7 +50,7 @@
     .attr("y", function(d) {
       return lPositionScale(d.ind) + 3
     })
-    .style("font-size", "10px")
+    .style("font-size", "12px")
     .style("text-align", "center")
     .style("text-anchor", "end")
     .text(function(d) {
@@ -94,7 +94,7 @@
     .attr("y", function(d) {
       return tPositionScale(d.ind) + 3
     })
-    .style("font-size", "10px")
+    .style("font-size", "12px")
     .style("text-align", "center")
     .style("text-anchor", "end")
     .text(function(d) {
@@ -111,7 +111,7 @@
       .attr("y", function(d) {
         return tPositionScale(d.ind) + 3
       })
-      .style("font-size", "10px")
+      .style("font-size", "12px")
       .style("text-align", "left")
       // .style("text-anchor", "end")
       .text(function(d) {
